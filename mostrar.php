@@ -1,0 +1,21 @@
+<?php 
+$deb_host = "am1shyeyqbxzy8gc.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+$db_name = "iis320fhcpx25b6d";
+$db_user = "x4zgv7cwfuaergf6";
+$db_password = "z3vozuor0t984sxs";
+
+$con=mysql_connect($db_host,$db_user,$db_password) or die ("Problemas al conectar server");
+mysql_select_db($db_name,$con) or die("Problemas al conectar database");
+
+$result = mysql_query("SELECT * FROM productos" ) ; 
+if ($row = mysql_fetch_array($result)){ 
+echo "<table border = '100%' width='100%'> "; 
+echo "<tr><td><strong>id_producto</strong></td><td><strong>producto</strong></td><td><strong>descripcion</strong></td><td><strong>existencias</strong></td><td><strong>precio_compra</strong></td><td><strong>precio_venta</strong></td></tr> "; 
+do { 
+echo "<tr><td>".$row['id_producto']."</td><td>".$row['producto']."</td><td>".$row['descripcion']."</td><td>".$row['existencias']."</td><td>".$row['precio_compra']."</td><td>".$row['precio_venta']."</td></tr> "; 
+} while ($row = mysql_fetch_array($result)); 
+echo "</table> "; 
+} else { 
+echo "Texto si no se encuentran resultados"; 
+} 
+?> 
